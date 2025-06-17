@@ -51,16 +51,17 @@ export default function ConfigurePage() {
 
     let hasTTSKey = true;
     if (config.tts_model === "openai") {
-      hasTTSKey =
-        config.openai_api_key && config.openai_api_key.trim().length > 0;
+      hasTTSKey = Boolean(
+        config.openai_api_key && config.openai_api_key.trim().length > 0
+      );
     } else if (config.tts_model === "elevenlabs") {
-      hasTTSKey =
-        config.elevenlabs_api_key &&
-        config.elevenlabs_api_key.trim().length > 0;
+      hasTTSKey = Boolean(
+        config.elevenlabs_api_key && config.elevenlabs_api_key.trim().length > 0
+      );
     }
     // edge는 API 키 불필요
 
-    setIsValid(hasGeminiKey && hasTTSKey);
+    setIsValid(Boolean(hasGeminiKey && hasTTSKey));
   }, [config]);
 
   const interviewTypes = [
