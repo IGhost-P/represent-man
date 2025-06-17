@@ -153,7 +153,7 @@ export default function GeneratePage() {
 
       // 팟캐스트 생성 요청
       const response = await fetch(
-        "http://localhost:8000/api/generate-podcast",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/generate-podcast`,
         {
           method: "POST",
           body: formData,
@@ -182,7 +182,7 @@ export default function GeneratePage() {
     statusIntervalRef.current = setInterval(async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/task-status/${id}`
+          `${process.env.NEXT_PUBLIC_API_URL}/api/task-status/${id}`
         );
         if (!response.ok) {
           throw new Error("상태 확인에 실패했습니다.");

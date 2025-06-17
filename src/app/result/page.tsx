@@ -131,7 +131,10 @@ export default function ResultPage() {
 
   const handleDownload = () => {
     if (result?.download_url) {
-      window.open(`http://localhost:8000${result.download_url}`, "_blank");
+      window.open(
+        `${process.env.NEXT_PUBLIC_API_URL}${result.download_url}`,
+        "_blank"
+      );
     }
   };
 
@@ -262,7 +265,7 @@ export default function ResultPage() {
             {result.download_url && (
               <audio
                 ref={audioRef}
-                src={`http://localhost:8000${result.download_url}`}
+                src={`${process.env.NEXT_PUBLIC_API_URL}${result.download_url}`}
                 preload="metadata"
               />
             )}
